@@ -6,28 +6,37 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Homepage</title>
 	<link rel="stylesheet" href="./CSS/recipeCards.css">
+	<link rel="stylesheet" href="./css/css_reset.css">
 </head>
 
 <body>
 	<header>
-		<h1>Test heading</h1>
+		<h1 class="homepage-heading">Test heading</h1>
 		<p class="header-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi mollitia pariatur esse
 			expedita blanditiis,
 			exercitationem ad.</p>
 
 	</header>
 
-	<article class="recipe-card">
-		<h2>Pepperoni pizza</h2>
-		
-		<figure>
-			<img src="images/Pepperoni_pizza.png" alt="Freshly baked chocolate chip cookies">
-			<figcaption>En italiensk klassiker i svensk tappning. Varför krångla med mozarella och tomatsås när man har
-				hushålls och tomatpuré!</figcaption>
-		</figure>
-
-		<p>5 INGREDIENSER | 30 MINUTER</p>
-	</article>
+	<a class="recipe-card-link" href="">
+		<article class="recipe-card">
+			<figure class="recipe-image-container">
+				<img src="images/Pepperoni_pizza.png" alt="">
+			</figure>
+			<div class="recipe-info-container">
+				<h2 class="recipe-heading">
+					Pepperoni pizza
+				</h2>
+				<p class="recipe-description">
+					En italiensk klassiker i svensk tappning. Varför krångla med mozarella och tomatsås
+					när man har
+					hushålls och tomatpuré!</figcaption>
+				</p>
+				<hr>
+				<p class="recipe-details">5 INGREDIENSER | 30 MINUTER</p>
+			</div>
+		</article>
+	</a>
 
 	<script src="./Scripts/recipeCards.js"></script>
 	<script src="./Scripts/main.js"></script>
