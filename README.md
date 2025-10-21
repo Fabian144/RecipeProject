@@ -1,10 +1,10 @@
 # Chas Academy Front-end/UX project: Recipe Website - Team C
-A group project by Chas Academy Front-end/UX students in 2025. The goal was to create a website that displays recipes and their ratings, sorts them by category and has comment and rating features.
+A group project by Chas Academy Front-end/UX students in 2025. The goal was to create a dynamic website that displays recipes and their ratings, sorts them by category and has comment and rating features.
 
 It was built using both plain HTML, CSS, JavaScript and different frameworks like Vue.
 
 ## Live demo
-See the progress or finished website here:
+See the progress or finished website here: https://fabian144.github.io/ChasRecipeProject/
 
 ## Tools
 This website was built using:
