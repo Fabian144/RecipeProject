@@ -1,5 +1,18 @@
 header {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+  margin-bottom: 0;
+	font-size: 2.5rem;
+}
+
+.header-caption {
+	max-width: 30em;
+	font-size: 1.2rem;
 }
 
 .recipe-card {
@@ -13,5 +26,5 @@ figure {
 
 figcaption {
   justify-self: flex-end;
-	margin-left: 1em;
+  margin-left: 1em;
 }
