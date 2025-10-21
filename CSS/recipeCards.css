@@ -1,0 +1,17 @@
+header {
+  text-align: center;
+}
+
+.recipe-card {
+  background-color: #c3c3c3;
+}
+
+figure {
+  display: grid;
+  grid-template-columns: auto auto;
+}
+
+figcaption {
+  justify-self: flex-end;
+	margin-left: 1em;
+}
