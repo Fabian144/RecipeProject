@@ -18,7 +18,7 @@ header {
 
 .recipe-card-link {
   color: unset;
-	text-decoration: none;
+  text-decoration: none;
 }
 
 .recipe-card {
@@ -26,6 +26,7 @@ header {
   display: grid;
   grid-template-columns: auto auto;
   margin: 1.5em;
+	float: right;
 }
 
 .recipe-card:hover {

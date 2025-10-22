@@ -1,4 +1,4 @@
-import fetchData from "./main.js";
+import { fetchData } from "./main.js";
 
 fetchData(`./data/recept.json`).then(useData);
 

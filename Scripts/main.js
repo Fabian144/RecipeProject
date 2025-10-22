@@ -9,4 +9,12 @@ async function fetchData(url) {
   }
 }
 
-export default fetchData;
+/*
+Ovan går att använda i valfri .js fil om man importerar funktionen
+Exempel:
+fetchData("sökväg till json fil").then(valfriFunktion);
+valfriFunktion() {
+};
+*/
+
+export { fetchData };
