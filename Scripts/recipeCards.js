@@ -1,14 +1,9 @@
-import { fetchData } from "./main.js";
+import { recipes } from "./main.js";
 
-fetchData(`./data/recept.json`).then(useData);
+let recipeCardHTML = ``;
 
-function useData(dataFromFetch) {
-  const recipes = dataFromFetch.recipes;
-
-  let recipeCardHTML = ``;
-
-  recipes.forEach((recipe) => {
-    recipeCardHTML += `<a class="recipe-card-link" href="./recipePage.html">
+recipes.forEach((recipe) => {
+  recipeCardHTML += `<a class="recipe-card-link" href="./recipePage.html">
 
 			<article class="recipe-card">
 				<figure class="recipe-image-container">
@@ -30,7 +25,6 @@ function useData(dataFromFetch) {
 				</div>
 			</article>
 		</a>`;
-  });
+});
 
-  document.body.innerHTML += recipeCardHTML;
-}
+document.body.innerHTML += recipeCardHTML;
