@@ -23,11 +23,10 @@ header {
 
 .recipe-card {
   background-color: #c3c3c3;
-  display: grid;
-  grid-template-columns: auto auto;
+  display: flex;
   margin: 1.5em;
 	float: right;
-	min-width: 90%;
+	min-width: 80%;
 }
 
 .recipe-card:hover {

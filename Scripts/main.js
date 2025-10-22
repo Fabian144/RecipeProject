@@ -9,12 +9,13 @@ async function fetchData(url) {
   }
 }
 
-/*
-Ovan går att använda i valfri .js fil om man importerar funktionen
-Exempel:
-fetchData("sökväg till json fil").then(valfriFunktion);
-valfriFunktion() {
-};
-*/
+async function getRecipes() {
+  const data = await fetchData(`./data/recept.json`);
+  return data.recipes;
+}
 
-export { fetchData };
+const recipes = await getRecipes();
+
+// Variabeln ovan är en array med varje recept objekt inuti
+
+export { recipes };
