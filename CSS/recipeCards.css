@@ -27,6 +27,7 @@ header {
   grid-template-columns: auto auto;
   margin: 1.5em;
 	float: right;
+	min-width: 90%;
 }
 
 .recipe-card:hover {

@@ -3,23 +3,23 @@
   [
     {
       "name": "Pepperoni pizza",
-      "image": "(image path)",
+      "image": "./images/Pepperoni_pizza.png",
       "alt-text": "(image alt text)",
       "rating": [{ "current_stars": 0 }, { "total_votes": 0 }],
       "ingredients": ["Mjöl", "Champinjoner"],
       "steps": ["Rör om", "Grädda"],
-      "cooking_time": "cooking time",
-      "description": "beskrivning av hur det tillagas"
+      "cooking_time": "30",
+      "description": "En italiensk klassiker i svensk tappning. Varför krångla med mozarella och tomatsås när man har hushålls och tomatpuré!"
     },
     {
       "name": "Tacopaj",
-      "image": "(image path)",
+      "image": "./images/tacopaj.svg",
       "alt-text": "(image alt text)",
       "rating": [{ "current_stars": 0 }, { "total_votes": 0 }],
       "ingredients": ["Mjöl", "Tomater"],
       "steps": ["Rör om", "Grädda"],
-      "cooking_time": "cooking time",
-      "description": "beskrivning av hur det tillagas"
+      "cooking_time": "15",
+      "description": "En Mexikansk klassiker i pajversion. Inte kryddstark för säkerhetsskull."
     }
   ]
 }
