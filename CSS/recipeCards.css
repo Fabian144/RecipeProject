@@ -1,0 +1,74 @@
+header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.homepage-heading {
+  margin-bottom: 0;
+  font-size: 2.75em;
+}
+
+.header-caption {
+  max-width: 30em;
+  font-size: 1.25em;
+  margin-top: 0.5em;
+}
+
+.recipe-card-link {
+  color: unset;
+  text-decoration: none;
+}
+
+.recipe-card {
+  background-color: #c3c3c3;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin: 1.5em;
+	float: right;
+}
+
+.recipe-card:hover {
+  box-shadow: #00000096 1px 1px 10px 1px;
+}
+
+.recipe-heading {
+  font-size: 2.25em;
+  margin: 0.25em 0 0;
+}
+
+hr {
+  margin: auto 0 0;
+}
+
+.recipe-image-container {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 1.25em;
+}
+
+.recipe-info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 1em 1em 0;
+}
+
+figcaption {
+  justify-self: flex-end;
+  margin-left: 1em;
+}
+
+.recipe-description {
+  font-size: 1.2em;
+}
+
+.recipe-details {
+  align-self: center;
+  font-size: 1.3em;
+}
+
+img {
+  max-width: 100%;
+}
