@@ -4,8 +4,23 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recipe page</title>
+	 <link rel="stylesheet" href="./CSS/comment.css">
 </head>
 <body>
+
+	<section class="comment-section">
+
+  <h4>Dela din smakupplevelse</h4>
+
+  <input type="text" id="userName" placeholder="Ditt namn">
+  <textarea id="userComment" placeholder="Skriv din kommentar här"></textarea>
+  <button id="addComment">Skicka</button>
+
+  <!-- Kommentarerna visas här UNDER fälten -->
+  <div id="commentList"></div>
+
+</section>
 	
+	<script type="module" src="./Scripts/comment.js"></script>
 </body>
 </html>

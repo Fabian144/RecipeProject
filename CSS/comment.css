@@ -1,0 +1,97 @@
+/* Kommentarsektion */
+.comment-section {
+  background: #ffffff; /* vitt, rent */
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 700px;
+  margin: 40px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* Titel */
+.comment-section h4 {
+  font-size: 20px;
+  color: #2d6a4f; /* mjuk grön, frisk Arla-känsla */
+  margin-bottom: 20px;
+  text-align: left;
+  font-weight: 600;
+}
+
+/* Formulär */
+#userName, #userComment {
+  width: 100%;
+  padding: 12px 8px ;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #cfd8dc; /* ljusgrå kant */
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9; /* mjukt ljusgrå */
+}
+
+#userName:focus, #userComment:focus {
+  border-color: #2d6a4f; /* grön fokus */
+  box-shadow: 0 0 5px rgba(45, 106, 79, 0.2);
+  outline: none;
+}
+
+#addComment {
+  background-color: #2d6a4f; /* grön knapp */
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  display: block;
+  margin: 0 auto;
+}
+
+#addComment:hover {
+  background-color: #37966f; /* ljusare grön på hover */
+  transform: scale(1.05);
+}
+
+/* Kommentarlista */
+#commentList {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Enskild kommentar */
+.comment {
+  background-color: #f1f8f5; /* mycket ljus grön-beige ton */
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.comment:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.comment strong {
+  display: block;
+  font-size: 16px;
+  color: #14532d; /* mörkare grön */
+  margin-bottom: 5px;
+}
+
+.comment p {
+  font-size: 14px;
+  color: #333333; /* mörkgrå text */
+  line-height: 1.5;
+}
+
+.comment span {
+  font-size: 12px;
+  color: #6b7280; /* neutral grå accent */
+  float: right;
+  margin-top: 5px;
+}
