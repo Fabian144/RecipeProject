@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta charset="UTF-8">
+	<title>Recipes</title>
+	<link rel="stylesheet" href="./css/css_reset.css">
+	<link rel="stylesheet" href="./CSS/recipePageTop.css">
+</head>
+
+<body>
+    <header class="site_header">
+        <h1>ChasRecipeProject</h1>
+    </header>
+
+<main class="site_content">
+        <section class="Title_and_recipe_information">
+            <div class="recipe_title">
+            <h2>Recipe Title</h2> <!-- förhoppningsvis variabel med vue --->
+            </div>
+            <div class="recipe_information">
+            <p>Cook Time: <span id="cook_time_placeholder">[Dynamisk Tid]</span></p> <!-- förhoppningsvis variabel med vue --->
+            <p>Nödvändiga ingredienser: <span id="ingredients_placeholder">[Dynamiskt antal]</span></p> <!-- förhoppningsvis variabel med vue --->
+            </div>
+        </section>
+
+        <section class="steps_and_ingredients_wrapper">
+            <div class="steps_div">
+                <h3>Gör såhär:</h3>
+                <ol class="steps_list"> <!-- någon form av for-loop senare --->
+                <li>[Dynamiska steg och receptbeskrivningar]</li>
+                <li>[Dynamiska steg och receptbeskrivningar]</li>
+                <li>[Dynamiska steg och receptbeskrivningar]</li>
+                <li>[Dynamiska steg och receptbeskrivningar]</li>
+                <li>[Dynamiska steg och receptbeskrivningar]</li>
+                </ol>
+            </div>
+
+            <div class="recipe_column">
+                <div class="recipe_image">
+                    <img src="images/pepperoni_pizza.png" alt="bild på pepperoni_pizza" id="recipe_image_placeholder">
+                    <p>[Dynamisk rating etc]</p>
+                </div>
+
+                <div class="ingredients_div">
+                    <p id="ingredients">Ingredienser:</p>
+                    <ul id="ingredients_list_placeholder"> <!-- någon form av for-loop senare --->
+                        <li>[Dynamiska ingredienser]</li>
+                        <li>[Dynamiska ingredienser]</li>
+                        <li>[Dynamiska ingredienser]</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="recipe"></div>
+    </main>
+
+
+    <footer class="site_footer">
+        <p>&copy; 2025 ChasRecipeProject. All rights reserved.</p>
+    </footer>
+</body>
+</html>
