@@ -1,0 +1,82 @@
+*
+{
+    box-sizing: border-box;
+}
+
+.steps_and_ingredients_wrapper 
+{
+    display: flex;
+    flex-wrap: wrap-reverse; 
+    gap: 50px;
+    padding: 2%;
+    align-items: flex-start;
+}
+.Title_and_recipe_information
+{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 35px;
+}
+
+.steps_and_ingredients_wrapper > .steps_div, .steps_and_ingredients_wrapper > .recipe_column 
+{
+    flex: 1 1 320px;
+    min-width: 320px;
+}
+
+.steps_div 
+{
+    display: flex;
+    flex-direction: column;
+    background-color: #e4e4e4;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.steps_list 
+{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.steps_list li 
+{
+    color: #fff;
+    background-color: #4a4a4a;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.steps_list li:hover 
+{
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.ingredients_div 
+{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #1c7900;
+    padding: 16px;
+    border-radius: 10px;
+}
+
+.recipe_image 
+{
+text-align: center;
+}
+
+.recipe_image img 
+{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+}
