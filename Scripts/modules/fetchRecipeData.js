@@ -9,4 +9,11 @@ async function fetchData(url) {
   }
 }
 
-export default fetchData;
+async function getRecipes() {
+	const data = await fetchData(`./data/recept.json`);
+	return data.recipes;
+}
+
+const recipes = await getRecipes();
+
+export default recipes;

@@ -1,12 +1,5 @@
 import { createApp } from "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.js";
-import fetchData from "../modules/fetchRecipeData.js";
-
-async function getRecipes() {
-  const data = await fetchData(`./data/recept.json`);
-  return data.recipes;
-}
-
-const recipes = await getRecipes();
+import recipes from "./modules/fetchRecipeData.js";
 
 const theApp = createApp({
   data() {
