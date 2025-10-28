@@ -24,7 +24,7 @@ createApp({
     const recipeData = data.recipes[0]; 
     /* -"0"kommer behövas bytas ut mot variabel, beroende på användares selection. 
     If-sats som väljer recept ifall det matchar json?
-    - Lägga till throw, try, catch ifall något går fel vid fetch??
+    - Lägga till throw, try, catch ifall något går fel vid fetch???
     */
     
     this.recipeVar = recipeData;
