@@ -1,37 +1,39 @@
-import { recipes, recipeStarElements } from "./main.js";
+import { createApp } from "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.js";
+import recipes from "./modules/fetchRecipeData.js";
 
-let recipeCardHTML = ``;
+const theApp = createApp({
+  data() {
+    return {
+      recipes: recipes,
+      vote: 1,
+    };
+  },
+  methods: {
+    newRating(newVote) {
+      const recipeHeading = document.querySelector(".recipe_title").innerText;
+      const recipe = recipes.filter((recipe) => recipe.name === recipeHeading)[0];
+      console.log("This vote: " + newVote);
 
-recipes.forEach((recipe) => {
-  recipeCardHTML += `<a class="recipe-card-link" href="./recipePage.html">
+      let currentRating = recipe.rating[0].current_stars;
+      let currentVotes = recipe.rating[1].total_votes;
 
-		<article class="recipe-card">
-			<figure class="recipe-image-container">
-				<img src="${recipe.image}" alt="${recipe.alt_text}">
-			</figure>
+      const newRating = (currentRating * currentVotes + newVote) / (currentVotes + 1);
 
-			<div class="recipe-info-container">
-				<h2 class="recipe-heading">
-					${recipe.name}
-				</h2>
-
-				<div class="recipe-star-container">
-					${recipeStarElements(recipe)}
-				</div>
-
-				<p class="recipe-description">
-					${recipe.description}
-				</p>
-
-			</div>
-
-			<div class="recipe-detail-container">
-				<hr>
-				<p class="recipe-details">${recipe.ingredients.length} INGREDIENSER | ${recipe.cooking_time} MINUTER</p>
-			</div>
-			
-		</article>
-	</a>`;
+      recipe.rating[0].current_stars = newRating;
+      recipe.rating[1].total_votes++;
+      console.log(
+        "New average rating: " + recipe.rating[0].current_stars,
+        "New total votes: " + recipe.rating[1].total_votes
+      );
+    },
+  },
+  mounted() {
+    const icons = document.querySelectorAll(".recipe-star-container > i");
+    icons.forEach((icon) => {
+      const vote = this.vote++;
+      icon.addEventListener("click", () => this.newRating(vote));
+    });
+  },
 });
 
-document.body.innerHTML += recipeCardHTML;
+theApp.mount("#rating-section");

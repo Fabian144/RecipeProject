@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recipe page</title>
-	 <link rel="stylesheet" href="./CSS/comment.css">
+	<link rel="stylesheet" href="./CSS/comment.css">
+	<script src="https://kit.fontawesome.com/df5f7c64ea.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
 </head>
+
 <body>
+	<h2 class="recipe_title">Pepperoni pizza</h2> <!-- La till en h2 för att kunna testa omdömes funktionen -->
+
+	<div id="rating-section">
+		<div class="recipe-star-container">
+			<i class="fa-regular fa-star fa-xl"></i>
+			<i class="fa-regular fa-star fa-xl"></i>
+			<i class="fa-regular fa-star fa-xl"></i>
+			<i class="fa-regular fa-star fa-xl"></i>
+			<i class="fa-regular fa-star fa-xl"></i>
+		</div>
+	</div>
+
+	</div>
 
 	<section class="comment-section">
 
-  <h4>Dela din smakupplevelse</h4>
+		<h4>Dela din smakupplevelse</h4>
 
-  <input type="text" id="userName" placeholder="Ditt namn">
-  <textarea id="userComment" placeholder="Skriv din kommentar här"></textarea>
-  <button id="addComment">Skicka</button>
+		<input type="text" id="userName" placeholder="Ditt namn">
+		<textarea id="userComment" placeholder="Skriv din kommentar här"></textarea>
+		<button id="addComment">Skicka</button>
 
-  <!-- Kommentarerna visas här UNDER fälten -->
-  <div id="commentList"></div>
+		<!-- Kommentarerna visas här UNDER fälten -->
+		<div id="commentList"></div>
 
-</section>
-	
+	</section>
+
 	<script type="module" src="./Scripts/comment.js"></script>
+	<script type="module" src="./Scripts/recipeCards.js"></script>
 </body>
+
 </html>
