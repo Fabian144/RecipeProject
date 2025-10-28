@@ -7,13 +7,14 @@ const theApp = createApp({
       recipes: recipes,
       votePerStar: 0,
       addedVote: 0,
+      commentAmount: document.querySelectorAll("#commentList > .comment").length,
     };
   },
   methods: {
-    newRating(commentAmount) {
+    newRating() {
       const newCommentAmount = document.querySelectorAll("#commentList > .comment").length;
 
-      if (this.addedVote > 0 && newCommentAmount > commentAmount) {
+      if (this.addedVote > 0 && newCommentAmount > this.commentAmount) {
         const recipeHeading = document.querySelector(".recipe_title").innerText;
         const recipe = recipes.filter((recipe) => recipe.name === recipeHeading)[0];
         console.log("This vote: " + this.addedVote);
@@ -29,6 +30,8 @@ const theApp = createApp({
           "New average rating: " + recipe.rating[0].current_stars,
           "New total votes: " + recipe.rating[1].total_votes
         );
+
+        this.commentAmount++;
       }
     },
 
@@ -56,10 +59,7 @@ const theApp = createApp({
       icon.addEventListener("click", () => this.logRating(vote));
     });
 
-    const commentAmount = document.querySelectorAll("#commentList > .comment").length;
-    document
-      .querySelector("#addComment")
-      .addEventListener("click", () => this.newRating(commentAmount));
+    document.querySelector("#addComment").addEventListener("click", this.newRating);
   },
 });
 
