@@ -1,37 +1,66 @@
-import { recipes, recipeStarElements } from "./main.js";
+import { createApp } from "https://unpkg.com/vue@3.5.22/dist/vue.esm-browser.js";
+import recipes from "./modules/fetchRecipeData.js";
 
-let recipeCardHTML = ``;
+const theApp = createApp({
+  data() {
+    return {
+      recipes: recipes,
+      votePerStar: 0,
+      addedVote: 0,
+    };
+  },
+  methods: {
+    newRating(commentAmount) {
+      const newCommentAmount = document.querySelectorAll("#commentList > .comment").length;
 
-recipes.forEach((recipe) => {
-  recipeCardHTML += `<a class="recipe-card-link" href="./recipePage.html">
+      if (this.addedVote > 0 && newCommentAmount > commentAmount) {
+        const recipeHeading = document.querySelector(".recipe_title").innerText;
+        const recipe = recipes.filter((recipe) => recipe.name === recipeHeading)[0];
+        console.log("This vote: " + this.addedVote);
 
-		<article class="recipe-card">
-			<figure class="recipe-image-container">
-				<img src="${recipe.image}" alt="${recipe.alt_text}">
-			</figure>
+        let currentRating = recipe.rating[0].current_stars;
+        let currentVotes = recipe.rating[1].total_votes;
 
-			<div class="recipe-info-container">
-				<h2 class="recipe-heading">
-					${recipe.name}
-				</h2>
+        const newRating = (currentRating * currentVotes + this.addedVote) / (currentVotes + 1);
 
-				<div class="recipe-star-container">
-					${recipeStarElements(recipe)}
-				</div>
+        recipe.rating[0].current_stars = newRating;
+        recipe.rating[1].total_votes++;
+        console.log(
+          "New average rating: " + recipe.rating[0].current_stars,
+          "New total votes: " + recipe.rating[1].total_votes
+        );
+      }
+    },
 
-				<p class="recipe-description">
-					${recipe.description}
-				</p>
+    hoverStars() {
+      const starIcons = document.querySelectorAll(".fa-star");
+      starIcons.forEach((starIcon) => {
+        const starIconStyle = window.getComputedStyle(starIcon);
+        if (starIconStyle.cursor == "pointer") {
+          starIcon.classList.add("fa-solid");
+        } else {
+          starIcon.classList.remove("fa-solid");
+        }
+      });
+    },
 
-			</div>
+    logRating(vote) {
+      this.addedVote = vote + 1;
+    },
+  },
+  mounted() {
+    const icons = document.querySelectorAll(".fa-star");
+    icons.forEach((icon) => {
+      const vote = this.votePerStar++;
+      icon.addEventListener("mouseover", this.hoverStars);
+      icon.addEventListener("click", () => this.logRating(vote));
+    });
 
-			<div class="recipe-detail-container">
-				<hr>
-				<p class="recipe-details">${recipe.ingredients.length} INGREDIENSER | ${recipe.cooking_time} MINUTER</p>
-			</div>
-			
-		</article>
-	</a>`;
+    const commentAmount = document.querySelectorAll("#commentList > .comment").length;
+    document
+      .querySelector("#addComment")
+      .addEventListener("click", () => this.newRating(commentAmount));
+  },
 });
 
-document.body.innerHTML += recipeCardHTML;
+theApp.mount("#rating-section");

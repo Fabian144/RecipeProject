@@ -68,11 +68,6 @@ hr {
   padding: 1em 1em 0;
 }
 
-figcaption {
-  justify-self: flex-end;
-  margin-left: 1em;
-}
-
 .recipe-description {
   font-size: 1.25em;
 }

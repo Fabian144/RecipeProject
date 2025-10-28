@@ -8,17 +8,52 @@
 	<link rel="stylesheet" href="./CSS/recipeCards.css">
 	<link rel="stylesheet" href="./css/css_reset.css">
 	<script src="https://kit.fontawesome.com/df5f7c64ea.js" crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
 	<header>
 		<h1 class="homepage-heading">Test heading</h1>
 		<p class="header-caption">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi mollitia pariatur esse
-			expedita blanditiis,
-			exercitationem ad.</p>
+			expedita blanditiis, exercitationem ad.</p>
 	</header>
 
-	<script type="module" src="./Scripts/recipeCards.js"></script>
+	<div id="recipe-card">
+		<a v-for="recipe in recipes" class="recipe-card-link" href="./recipePage.html">
+
+			<article class="recipe-card">
+				<figure class="recipe-image-container">
+					<img :src="recipe.image" :alt="recipe.alt_text">
+				</figure>
+
+				<div class="recipe-info-container">
+					<h2 class="recipe-heading">
+						{{recipe.name}}
+					</h2>
+
+					<div class="recipe-star-container">
+						<i :class="{ 'fa-solid': recipeRating(recipe) >= 1 }" class="fa-regular fa-star fa-xl"></i>
+						<i :class="{ 'fa-solid': recipeRating(recipe) >= 2 }" class="fa-regular fa-star fa-xl"></i>
+						<i :class="{ 'fa-solid': recipeRating(recipe) >= 3 }" class="fa-regular fa-star fa-xl"></i>
+						<i :class="{ 'fa-solid': recipeRating(recipe) >= 4 }" class="fa-regular fa-star fa-xl"></i>
+						<i :class="{ 'fa-solid': recipeRating(recipe) >= 5 }" class="fa-regular fa-star fa-xl"></i>
+					</div>
+
+					<p class="recipe-description">
+						{{recipe.description}}
+					</p>
+
+				</div>
+
+				<div class="recipe-detail-container">
+					<hr>
+					<p class="recipe-details">{{recipe.ingredients.length}} INGREDIENSER | {{recipe.cooking_time}} MINUTER</p>
+				</div>
+
+			</article>
+		</a>
+	</div>
+
 	<script type="module" src="./Scripts/main.js"></script>
 </body>
 

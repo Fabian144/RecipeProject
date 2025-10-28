@@ -1,0 +1,33 @@
+#rating-section {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.rating-title {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+.recipe-star-container {
+  background-color: #cfffd5;
+  padding: 1.5em;
+  display: flex;
+  gap: 0.75em;
+}
+
+#rating-section > .recipe-star-container > .fa-star {
+  font-size: 2em;
+}
+
+#rating-section > .recipe-star-container > .fa-star:hover {
+  cursor: pointer;
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.rating-choice {
+	font-size: 1.25em;
+	margin-bottom: 0;
+}
