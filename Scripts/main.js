@@ -22,4 +22,4 @@ const theApp = createApp({
   },
 });
 
-theApp.mount("#recipe-cards");
+theApp.mount("#recipe-card");

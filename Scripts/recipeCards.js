@@ -5,34 +5,61 @@ const theApp = createApp({
   data() {
     return {
       recipes: recipes,
-      vote: 1,
+      votePerStar: 0,
+      addedVote: 0,
     };
   },
   methods: {
-    newRating(newVote) {
-      const recipeHeading = document.querySelector(".recipe_title").innerText;
-      const recipe = recipes.filter((recipe) => recipe.name === recipeHeading)[0];
-      console.log("This vote: " + newVote);
+    newRating(commentAmount) {
+      const newCommentAmount = document.querySelectorAll("#commentList > .comment").length;
 
-      let currentRating = recipe.rating[0].current_stars;
-      let currentVotes = recipe.rating[1].total_votes;
+      if (this.addedVote > 0 && newCommentAmount > commentAmount) {
+        const recipeHeading = document.querySelector(".recipe_title").innerText;
+        const recipe = recipes.filter((recipe) => recipe.name === recipeHeading)[0];
+        console.log("This vote: " + this.addedVote);
 
-      const newRating = (currentRating * currentVotes + newVote) / (currentVotes + 1);
+        let currentRating = recipe.rating[0].current_stars;
+        let currentVotes = recipe.rating[1].total_votes;
 
-      recipe.rating[0].current_stars = newRating;
-      recipe.rating[1].total_votes++;
-      console.log(
-        "New average rating: " + recipe.rating[0].current_stars,
-        "New total votes: " + recipe.rating[1].total_votes
-      );
+        const newRating = (currentRating * currentVotes + this.addedVote) / (currentVotes + 1);
+
+        recipe.rating[0].current_stars = newRating;
+        recipe.rating[1].total_votes++;
+        console.log(
+          "New average rating: " + recipe.rating[0].current_stars,
+          "New total votes: " + recipe.rating[1].total_votes
+        );
+      }
+    },
+
+    hoverStars() {
+      const starIcons = document.querySelectorAll(".fa-star");
+      starIcons.forEach((starIcon) => {
+        const starIconStyle = window.getComputedStyle(starIcon);
+        if (starIconStyle.cursor == "pointer") {
+          starIcon.classList.add("fa-solid");
+        } else {
+          starIcon.classList.remove("fa-solid");
+        }
+      });
+    },
+
+    logRating(vote) {
+      this.addedVote = vote + 1;
     },
   },
   mounted() {
-    const icons = document.querySelectorAll(".recipe-star-container > i");
+    const icons = document.querySelectorAll(".fa-star");
     icons.forEach((icon) => {
-      const vote = this.vote++;
-      icon.addEventListener("click", () => this.newRating(vote));
+      const vote = this.votePerStar++;
+      icon.addEventListener("mouseover", this.hoverStars);
+      icon.addEventListener("click", () => this.logRating(vote));
     });
+
+    const commentAmount = document.querySelectorAll("#commentList > .comment").length;
+    document
+      .querySelector("#addComment")
+      .addEventListener("click", () => this.newRating(commentAmount));
   },
 });
 

@@ -6,15 +6,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Recipe page</title>
 	<link rel="stylesheet" href="./CSS/comment.css">
+	<link rel="stylesheet" href="./css/ratingSection.css">
 	<script src="https://kit.fontawesome.com/df5f7c64ea.js" crossorigin="anonymous"></script>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
 </head>
 
 <body>
-	<h2 class="recipe_title">Pepperoni pizza</h2> <!-- La till en h2 för att kunna testa omdömes funktionen -->
+	<h1 class="recipe_title">Pepperoni pizza</h1> <!-- La till en heading för att kunna testa omdömes funktionen -->
 
 	<div id="rating-section">
+		<p class="rating-title">Ge ditt betyg!</p>
+
 		<div class="recipe-star-container">
 			<i class="fa-regular fa-star fa-xl"></i>
 			<i class="fa-regular fa-star fa-xl"></i>
@@ -22,6 +25,8 @@
 			<i class="fa-regular fa-star fa-xl"></i>
 			<i class="fa-regular fa-star fa-xl"></i>
 		</div>
+
+		<p class="rating-choice">Ditt val: {{ addedVote > 0 ? addedVote : "Ej angett" }}</p>
 	</div>
 
 	</div>
