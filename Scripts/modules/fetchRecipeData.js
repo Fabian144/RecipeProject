@@ -9,12 +9,4 @@ async function fetchData(url) {
   }
 }
 
-async function getRecipes() {
-  const data = await fetchData(`../../data/recept.json`);
-  return data.recipes;
-}
-
-// Innehåller en array med varje recept objekt inuti så att man enkelt kan använda recept datat var som helst
-const recipes = await getRecipes();
-
-export default recipes;
+export default fetchData;
