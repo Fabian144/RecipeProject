@@ -8,6 +8,7 @@
 	<title>Recipes</title>
 	<link rel="stylesheet" href="./css/css_reset.css">
 	<link rel="stylesheet" href="./CSS/recipePageTop.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 
 <body>
@@ -15,52 +16,53 @@
         <h1>ChasRecipeProject</h1>
     </header>
 
-<main class="site_content">
-        <section class="Title_and_recipe_information">
-            <div class="recipe_title">
-            <h2>Recipe Title</h2> <!-- förhoppningsvis variabel med vue. --->
-            </div>
-            <div class="recipe_information">
-            <p>Cook Time: <span id="cook_time_placeholder">[Dynamisk Tid]</span></p> <!-- förhoppningsvis variabel med vue --->
-            <p>Nödvändiga ingredienser: <span id="ingredients_placeholder">[Dynamiskt antal]</span></p> <!-- förhoppningsvis variabel med vue --->
-            </div>
-        </section>
+<div id="app">
 
-        <section class="steps_and_ingredients_wrapper">
-            <div class="steps_div">
-                <h3>Gör såhär:</h3>
-                <ol class="steps_list"> <!-- någon form av for-loop senare --->
-                <li>[Dynamiska steg och receptbeskrivningar]</li>
-                <li>[Dynamiska steg och receptbeskrivningar]</li>
-                <li>[Dynamiska steg och receptbeskrivningar]</li>
-                <li>[Dynamiska steg och receptbeskrivningar]</li>
-                <li>[Dynamiska steg och receptbeskrivningar]</li>
-                </ol>
-            </div>
+  <section class="Title_and_recipe_information">
+    <div class="recipe_title">
+      <h2>{{ recipeNameVar }}</h2>
+    </div>
+    <div class="recipe_information">
+      <p>Cook Time: {{ cookTimeVar }} minuter</p>
+      <p>Nödvändiga ingredienser: {{ ingredientsAmountVar }}</p>
+    </div>
+  </section>
 
-            <div class="recipe_column">
-                <div class="recipe_image">
-                    <img src="images/pepperoni_pizza.png" alt="bild på pepperoni_pizza" id="recipe_image_placeholder">
-                    <p>[Dynamisk rating etc]</p>
-                </div>
+  <section class="steps_and_ingredients_wrapper">
+    <div class="steps_div">
+      <h3>Gör såhär:</h3>
+      <ol class="steps_list">
+        <li v-for="(step, index) in stepsVar">{{ step }}</li>
+        <!---- for (int i = 0; i < stepsVar.Length; i++)--->
+      </ol>
+    </div>
 
-                <div class="ingredients_div">
-                    <p id="ingredients">Ingredienser:</p>
-                    <ul id="ingredients_list_placeholder"> <!-- någon form av for-loop senare --->
-                        <li>[Dynamiska ingredienser]</li>
-                        <li>[Dynamiska ingredienser]</li>
-                        <li>[Dynamiska ingredienser]</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+    <div class="recipe_column">
+      <div class="recipe_image">
+        <img src="{{imageVar}}" alt="{{imageVar}}"> <!--- varför fungerar inte det här????? --->
+        <div>{{imageVarRefined}}</div> <!--- ?????? --->
+        <p>[Dynamisk rating etc]</p>
+      </div>
 
-        <div class="recipe"></div>
-    </main>
+      <div class="ingredients_div">
+        <p>Ingredienser:</p>
+        <ul>
+          <li v-for="(ingredient, index) in ingredientsVar">{{ ingredient }}</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  </main>
+</div>
 
 
     <footer class="site_footer">
         <p>&copy; 2025 ChasRecipeProject. All rights reserved.</p>
     </footer>
+
+
+
+    
+    <script src="recipePageTop.js"></script>
 </body>
 </html>
