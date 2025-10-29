@@ -19,16 +19,9 @@
 		<p class="rating-title">Ge ditt betyg!</p>
 
 		<div class="recipe-star-container">
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
+			<i v-for="star in stars" @click="logRating(star)" @mouseover="hoverStars(star)" @mouseleave="hoverStarsOff"
+				:class="star.class"></i>
 		</div>
-
-		<p class="rating-choice">Ditt val: {{ addedVote > 0 ? addedVote : "Ej angett" }}</p>
-	</div>
-
 	</div>
 
 	<section class="comment-section">

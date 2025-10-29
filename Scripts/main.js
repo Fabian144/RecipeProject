@@ -5,20 +5,13 @@ const theApp = createApp({
   data() {
     return {
       recipes,
+      stars: [{ rating: 1 }, { rating: 2 }, { rating: 3 }, { rating: 4 }, { rating: 5 }],
     };
   },
   methods: {
     recipeRating(recipe) {
       return Math.round(recipe.rating[0].current_stars);
     },
-  },
-  mounted() {
-    const icons = document.querySelectorAll(".fa-solid");
-    icons.forEach((icon) => {
-      if (icon.classList.contains("fa-regular")) {
-        icon.classList.remove("fa-regular");
-      }
-    });
   },
 });
 

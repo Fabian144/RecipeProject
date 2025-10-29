@@ -5,12 +5,27 @@ const theApp = createApp({
   data() {
     return {
       recipes,
-      votePerStar: 0,
       addedVote: 0,
       commentAmount: document.querySelectorAll("#commentList > .comment").length,
+      stars: [
+        { voteValue: 1, class: `${this.empty()}` },
+        { voteValue: 2, class: `${this.empty()}` },
+        { voteValue: 3, class: `${this.empty()}` },
+        { voteValue: 4, class: `${this.empty()}` },
+        { voteValue: 5, class: `${this.empty()}` },
+      ],
     };
   },
+
   methods: {
+    empty() {
+      return "fa-regular fa-star fa-xl";
+    },
+
+    filled() {
+      return "fa-solid fa-star fa-xl";
+    },
+
     newRating() {
       const newCommentAmount = document.querySelectorAll("#commentList > .comment").length;
 
@@ -31,35 +46,55 @@ const theApp = createApp({
           "New total votes: " + recipe.rating[1].total_votes
         );
 
-        this.commentAmount++;
+        this.commentAmount = document.querySelectorAll("#commentList > .comment").length;
       }
     },
 
-    hoverStars() {
-      const starIcons = document.querySelectorAll(".fa-star");
-      starIcons.forEach((starIcon) => {
-        const starIconStyle = window.getComputedStyle(starIcon);
-        if (starIconStyle.cursor == "pointer") {
-          starIcon.classList.add("fa-solid");
-        } else {
-          starIcon.classList.remove("fa-solid");
-        }
-      });
+    hoverStars(chosenIcon) {
+      if (this.addedVote === 0) {
+        this.stars.forEach((starIcon) => {
+          if (starIcon.voteValue <= chosenIcon.voteValue) {
+            starIcon.class = this.filled();
+          } else {
+            starIcon.class = this.empty();
+          }
+        });
+      }
     },
 
-    logRating(vote) {
-      this.addedVote = vote + 1;
+    hoverStarsOff() {
+      if (this.addedVote === 0) {
+        this.stars.forEach((starIcon) => {
+          starIcon.class = this.empty();
+        });
+      }
+    },
+
+    logRating(chosenIcon) {
+      if (this.addedVote !== chosenIcon.voteValue) {
+        this.addedVote = chosenIcon.voteValue;
+
+        this.stars.forEach((starIcon) => {
+          if (starIcon.voteValue < this.addedVote) {
+            starIcon.class = this.filled();
+          } else {
+            starIcon.class = this.empty();
+          }
+        });
+
+        chosenIcon.class = this.filled();
+      } else {
+        this.addedVote = 0;
+        this.stars.forEach((starIcon) => {
+          starIcon.class = this.empty();
+        });
+      }
     },
   },
-  mounted() {
-    const icons = document.querySelectorAll(".fa-star");
-    icons.forEach((icon) => {
-      const vote = this.votePerStar++;
-      icon.addEventListener("mouseover", this.hoverStars);
-      icon.addEventListener("click", () => this.logRating(vote));
-    });
 
-    document.querySelector("#addComment").addEventListener("click", this.newRating);
+  mounted() {
+    const commentButton = document.querySelector("#addComment");
+    commentButton.addEventListener("click", this.newRating);
   },
 });
 
