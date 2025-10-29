@@ -5,36 +5,27 @@ const theApp = createApp({
   data() {
     return {
       recipes,
-      starIcons: "",
-      // votePerStar: 0,
       addedVote: 0,
       commentAmount: document.querySelectorAll("#commentList > .comment").length,
       stars: [
-        { value: 1, isEmpty: true, isHovered: false, class: "fa-regular fa-star fa-xl" },
-        { value: 2, isEmpty: true, isHovered: false, class: "fa-regular fa-star fa-xl" },
-        { value: 3, isEmpty: true, isHovered: false, class: "fa-regular fa-star fa-xl" },
-        { value: 4, isEmpty: true, isHovered: false, class: "fa-regular fa-star fa-xl" },
-        { value: 5, isEmpty: true, isHovered: false, class: "fa-regular fa-star fa-xl" },
+        { voteValue: 1, class: `${this.empty()}` },
+        { voteValue: 2, class: `${this.empty()}` },
+        { voteValue: 3, class: `${this.empty()}` },
+        { voteValue: 4, class: `${this.empty()}` },
+        { voteValue: 5, class: `${this.empty()}` },
       ],
     };
   },
 
-  computed: {
-    eachStar() {
-      this.stars.forEach((star) => {
-        if (!star.isEmpty === true && star.value === this.addedVote) {
-          star.class = "fa-solid fa-star fa-xl";
-          this.addedVote = star.value;
-        } else {
-          star.class = "fa-regular fa-star fa-xl";
-        }
-      });
-
-      return this.stars;
-    },
-  },
-
   methods: {
+    empty() {
+      return "fa-regular fa-star fa-xl";
+    },
+
+    filled() {
+      return "fa-solid fa-star fa-xl";
+    },
+
     newRating() {
       const newCommentAmount = document.querySelectorAll("#commentList > .comment").length;
 
@@ -59,54 +50,47 @@ const theApp = createApp({
       }
     },
 
-    // chosenStar(votePerStar, starIcon) {
-    //   return starIcon.classList.contains(`${votePerStar}`);
-    // },
+    hoverStars(chosenIcon) {
+      this.starIcons.forEach((starIcon) => {
+        if (this.addedVote === 0 && this.chosenStar(starIcon, starIcon)) {
+          starIcon.classList.add("fa-solid");
+        }
+      });
+    },
 
-    // hoverStars(votePerStar) {
-    //   this.starIcons.forEach((starIcon) => {
-    //     if (this.addedVote === 0 && this.chosenStar(votePerStar, starIcon)) {
-    //       starIcon.classList.add("fa-solid");
-    //     }
-    //   });
-    // },
+    stopHoverStars(chosenIcon) {
+      this.starIcons.forEach((starIcon) => {
+        if (this.addedVote === 0) {
+          starIcon.classList.remove("fa-solid");
+        }
+      });
+    },
 
-    // stopHoverStars() {
-    //   this.starIcons.forEach((starIcon) => {
-    //     if (this.addedVote === 0) {
-    //       starIcon.classList.remove("fa-solid");
-    //     }
-    //   });
-    // },
+    logRating(chosenIcon) {
+      if (this.addedVote !== chosenIcon.voteValue) {
+        this.addedVote = chosenIcon.voteValue;
 
-    // logRating(votePerStar) {
-    //   this.addedVote = votePerStar;
+        this.stars.forEach((starIcon) => {
+          if (starIcon.voteValue < this.addedVote) {
+            starIcon.class = this.filled();
+          } else {
+            starIcon.class = this.empty();
+          }
+        });
 
-    // this.starIcons.forEach((starIcon) => {
-    //   if (this.chosenStar(votePerStar, starIcon)) {
-    //     starIcon.classList.add("fa-solid");
-    //   } else {
-    //     starIcon.classList.remove("fa-solid");
-    //   }
-    // });
-    //   },
-    // },
+        chosenIcon.class = this.filled();
+      } else {
+        this.addedVote = 0;
+        this.stars.forEach((starIcon) => {
+          starIcon.class = this.empty();
+        });
+      }
+    },
   },
 
   mounted() {
-    // const icons = document.querySelectorAll(".fa-star");
-    // icons.forEach((icon) => {
-    //   this.votePerStar++;
-    //   const votePerStar = this.votePerStar;
-
-    //   icon.addEventListener("mouseover", () => this.hoverStars(votePerStar));
-    //   icon.addEventListener("mouseout", this.stopHoverStars);
-    //   icon.addEventListener("click", () => this.logRating(votePerStar));
-    // });
-
-    document.querySelector("#addComment").addEventListener("click", this.newRating);
-
-    this.starIcons = document.querySelectorAll(".fa-star");
+    const commentButton = document.querySelector("#addComment");
+    commentButton.addEventListener("click", this.newRating);
   },
 });
 

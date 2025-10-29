@@ -19,8 +19,8 @@
 		<p class="rating-title">Ge ditt betyg!</p>
 
 		<div class="recipe-star-container">
-			<i v-for="star in eachStar" @click="star.isEmpty = !star.isEmpty"
-				@mouseover="star.isHovered = true" @mouseleave="star.isHovered = false" :class="star.class"></i>
+			<i v-for="star in stars" @click="logRating(star)"
+				@mouseover="" @mouseleave="" :class="star.class"></i>
 		</div>
 	</div>
 
