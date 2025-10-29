@@ -51,19 +51,23 @@ const theApp = createApp({
     },
 
     hoverStars(chosenIcon) {
-      this.starIcons.forEach((starIcon) => {
-        if (this.addedVote === 0 && this.chosenStar(starIcon, starIcon)) {
-          starIcon.classList.add("fa-solid");
-        }
-      });
+      if (this.addedVote === 0) {
+        this.stars.forEach((starIcon) => {
+          if (starIcon.voteValue <= chosenIcon.voteValue) {
+            starIcon.class = this.filled();
+          } else {
+            starIcon.class = this.empty();
+          }
+        });
+      }
     },
 
-    stopHoverStars(chosenIcon) {
-      this.starIcons.forEach((starIcon) => {
-        if (this.addedVote === 0) {
-          starIcon.classList.remove("fa-solid");
-        }
-      });
+    hoverStarsOff() {
+      if (this.addedVote === 0) {
+        this.stars.forEach((starIcon) => {
+          starIcon.class = this.empty();
+        });
+      }
     },
 
     logRating(chosenIcon) {

@@ -19,8 +19,8 @@
 		<p class="rating-title">Ge ditt betyg!</p>
 
 		<div class="recipe-star-container">
-			<i v-for="star in stars" @click="logRating(star)"
-				@mouseover="" @mouseleave="" :class="star.class"></i>
+			<i v-for="star in stars" @click="logRating(star)" @mouseover="hoverStars(star)" @mouseleave="hoverStarsOff"
+				:class="star.class"></i>
 		</div>
 	</div>
 
