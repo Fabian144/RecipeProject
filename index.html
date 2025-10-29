@@ -32,11 +32,8 @@
 					</h2>
 
 					<div class="recipe-star-container">
-						<i :class="{ 'fa-solid': recipeRating(recipe) >= 1 }" class="fa-regular fa-star fa-xl"></i>
-						<i :class="{ 'fa-solid': recipeRating(recipe) >= 2 }" class="fa-regular fa-star fa-xl"></i>
-						<i :class="{ 'fa-solid': recipeRating(recipe) >= 3 }" class="fa-regular fa-star fa-xl"></i>
-						<i :class="{ 'fa-solid': recipeRating(recipe) >= 4 }" class="fa-regular fa-star fa-xl"></i>
-						<i :class="{ 'fa-solid': recipeRating(recipe) >= 5 }" class="fa-regular fa-star fa-xl"></i>
+						<i v-for="star in stars" :class="{ 'fa-solid': recipeRating(recipe) >= star.rating}"
+							class="fa-regular fa-star fa-xl"></i>
 					</div>
 
 					<p class="recipe-description">

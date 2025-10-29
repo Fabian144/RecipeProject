@@ -5,11 +5,20 @@ const theApp = createApp({
   data() {
     return {
       recipes,
+      starIcons: "",
       votePerStar: 0,
       addedVote: 0,
       commentAmount: document.querySelectorAll("#commentList > .comment").length,
+      stars: [
+        { isEmpty: true },
+        { isEmpty: true },
+        { isEmpty: true },
+        { isEmpty: true },
+        { isEmpty: true },
+      ],
     };
   },
+
   methods: {
     newRating() {
       const newCommentAmount = document.querySelectorAll("#commentList > .comment").length;
@@ -31,35 +40,57 @@ const theApp = createApp({
           "New total votes: " + recipe.rating[1].total_votes
         );
 
-        this.commentAmount++;
+        this.commentAmount = document.querySelectorAll("#commentList > .comment").length;
       }
     },
 
-    hoverStars() {
-      const starIcons = document.querySelectorAll(".fa-star");
-      starIcons.forEach((starIcon) => {
-        const starIconStyle = window.getComputedStyle(starIcon);
-        if (starIconStyle.cursor == "pointer") {
+    chosenStar(votePerStar, starIcon) {
+      return starIcon.classList.contains(`${votePerStar}`);
+    },
+
+    hoverStars(votePerStar) {
+      this.starIcons.forEach((starIcon) => {
+        if (this.addedVote === 0 && this.chosenStar(votePerStar, starIcon)) {
+          starIcon.classList.add("fa-solid");
+        }
+      });
+    },
+
+    stopHoverStars() {
+      this.starIcons.forEach((starIcon) => {
+        if (this.addedVote === 0) {
+          starIcon.classList.remove("fa-solid");
+        }
+      });
+    },
+
+    logRating(votePerStar) {
+      this.addedVote = votePerStar;
+
+      this.starIcons.forEach((starIcon) => {
+        if (this.chosenStar(votePerStar, starIcon)) {
           starIcon.classList.add("fa-solid");
         } else {
           starIcon.classList.remove("fa-solid");
         }
       });
     },
-
-    logRating(vote) {
-      this.addedVote = vote + 1;
-    },
   },
+
   mounted() {
     const icons = document.querySelectorAll(".fa-star");
     icons.forEach((icon) => {
-      const vote = this.votePerStar++;
-      icon.addEventListener("mouseover", this.hoverStars);
-      icon.addEventListener("click", () => this.logRating(vote));
+      this.votePerStar++;
+      const votePerStar = this.votePerStar;
+
+      icon.addEventListener("mouseover", () => this.hoverStars(votePerStar));
+      icon.addEventListener("mouseout", this.stopHoverStars);
+      icon.addEventListener("click", () => this.logRating(votePerStar));
     });
 
     document.querySelector("#addComment").addEventListener("click", this.newRating);
+
+    this.starIcons = document.querySelectorAll(".fa-star");
   },
 });
 

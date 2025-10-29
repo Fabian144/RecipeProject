@@ -19,14 +19,8 @@
 		<p class="rating-title">Ge ditt betyg!</p>
 
 		<div class="recipe-star-container">
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
-			<i class="fa-regular fa-star fa-xl"></i>
+			<i v-for="star in stars" @click="isEmpty = false" class="fa-regular fa-star fa-xl"></i>
 		</div>
-
-		<p class="rating-choice">Ditt val: {{ addedVote > 0 ? addedVote : "Ej angett" }}</p>
 	</div>
 
 	</div>
